@@ -8,7 +8,9 @@ const connectionParams={
     useUnifiedTopology: true 
 }
 
-const uri = process.env.connectionstringuri;
+//const uri = process.env.connectionstringuri;
+
+const uri = {{ secrets.CONNECTIONSTRINGURI }};
 
 const connexion = mongoose.connect(uri,connectionParams).then (()=> console.log("connected to cloud atlas")).catch((err)=>console.log(err))
 
