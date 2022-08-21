@@ -1,0 +1,25 @@
+
+<div *ngIf="successMessage" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{successMessage}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+<table class="table" >
+    <thead>
+    <tr>
+    <th>name</th>
+    <th>mobile</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let us of readData'>
+        <td>{{us.name}}</td>
+        <td>{{us.mobile}}</td>
+        <td>id @ html level {{us._id}}</td>
+        <a><button><i class="fa fa-times" (click)=deleteId(us._id) ></i></button></a>
+        <a [routerLink]="['/create',us._id]"><button><i class="fa fa-check" aria-hidden="true" ></i></button></a>
+    </tr>
+    </tbody>    
+
+
+</table>
