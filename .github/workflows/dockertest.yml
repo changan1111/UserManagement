@@ -37,7 +37,7 @@ jobs:
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: changan1111 / newdocker
+          image: changan1111/newdocker
           dockerfile: Dockerfile
           tags: v1, latest
           registry: docker.io
