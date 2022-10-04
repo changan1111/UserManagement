@@ -99,7 +99,7 @@ app.delete('/user/:id', async (req, res) => {
 
 //Any routes will be redirected to the angular app
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist/frontend/index.html'));
 });
 
 app.listen(3000, () => {
