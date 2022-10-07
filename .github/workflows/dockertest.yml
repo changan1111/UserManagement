@@ -43,3 +43,6 @@ jobs:
           registry: docker.io
           username: "changan1111"
           password: ${{ secrets.DOCKER_PASSWORD }}
+          
+        env:
+           connectionstringuri: ${{ secrets.CONNECTIONSTRINGURI }}
