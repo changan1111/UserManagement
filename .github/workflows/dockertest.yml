@@ -28,14 +28,15 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.4.1
         
-        env:
-           connectionstringuri: ${{ secrets.CONNECTIONSTRINGURI }}
+        
         
       - name: Npm install & npm build
         run:  |
             npm install
             npm run build
         
+        env:
+           connectionstringuri: ${{ secrets.CONNECTIONSTRINGURI }}
             
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
