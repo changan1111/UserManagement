@@ -28,6 +28,9 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.4.1
         
+        env:
+           connectionstringuri: ${{ secrets.CONNECTIONSTRINGURI }}
+        
       - name: Npm install & npm build
         run:  |
             npm install
@@ -44,5 +47,4 @@ jobs:
           username: "changan1111"
           password: ${{ secrets.DOCKER_PASSWORD }}
           
-        env:
-           connectionstringuri: ${{ secrets.CONNECTIONSTRINGURI }}
+        
