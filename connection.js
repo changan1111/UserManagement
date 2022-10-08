@@ -10,7 +10,7 @@ const connectionParams={
 
 const uri = process.env.connectionstringuri;
 
-console.log(uri)
+console.log("connection url:" + uri)
 
 //const uri = {{ secrets.CONNECTIONSTRINGURI }};
 
