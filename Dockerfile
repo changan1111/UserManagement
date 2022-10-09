@@ -6,5 +6,5 @@
  RUN npm install
 
  COPY . .
-
- CMD ["npm", "run", "start"]
+ 
+ CMD ["node", "server.js"]
