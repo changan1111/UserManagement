@@ -18,7 +18,9 @@ app.use(express.json());
 var cors = require('cors');
 
 
-app.use(cors({origin: '*'}));
+app.use(cors({
+  origin: '*'
+}));
 
 app.post('/user', async (req, res) => {
   const { name, mobile } = req.body;
