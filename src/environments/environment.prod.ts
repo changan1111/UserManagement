@@ -1,3 +1,3 @@
 export const environment = {
-  production: true,Url:'http://44.203.68.172:3000'
+  production: true,Url:'http://localhost:3000'
 };

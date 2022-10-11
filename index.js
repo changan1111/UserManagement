@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const db = require('./connection');
 const postModel = require('./postModel');
+var cors = require('cors');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -15,7 +16,7 @@ app.use(express.json());
 
 
 
-var cors = require('cors');
+
 
 app.use(cors({
   origin: '*'
