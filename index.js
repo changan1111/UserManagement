@@ -17,7 +17,7 @@ app.use(express.json());
 
 
 
-/*
+
 app.use(cors({
   origin: '*'
 }));
@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-*/
+
 
 app.post('/user', async (req, res) => {
   const { name, mobile } = req.body;
