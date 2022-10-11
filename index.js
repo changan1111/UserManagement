@@ -29,7 +29,7 @@ app.use(function(req, res, next) {
 });
 
 
-app.post('/user', async (req, res) => {
+app.post('/user', async (req, res, next) => {
   const { name, mobile } = req.body;
   console.log(name)
   console.log(mobile)
@@ -43,7 +43,7 @@ app.post('/user', async (req, res) => {
 });
 
 
-app.get('/user', async (req, res) => {
+app.get('/user', async (req, res, next) => {
   const { name, mobile } = req.body;
   console.log(name)
   console.log(mobile)
@@ -57,7 +57,7 @@ app.get('/user', async (req, res) => {
 });
 
 
-app.get('/user/:id', async (req, res) => {
+app.get('/user/:id', async (req, res, next) => {
   const {id} = req.params;
   console.log(id)
   try {
@@ -71,7 +71,7 @@ app.get('/user/:id', async (req, res) => {
 });
 
 
-app.put('/user/:id', async (req, res) => {
+app.put('/user/:id', async (req, res, next) => {
   const {id} = req.params;
   const { name, mobile } = req.body;
   console.log(id)
@@ -93,7 +93,7 @@ app.put('/user/:id', async (req, res) => {
 });
 
 
-app.delete('/user/:id', async (req, res) => {
+app.delete('/user/:id', async (req, res, next) => {
   const {id} = req.params;
   console.log(req.params);
   console.log(id)

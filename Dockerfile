@@ -7,4 +7,4 @@
 
  COPY . .
  
- CMD ["node", "index.js","run","start"]
+ CMD ["node", "index.js"]
