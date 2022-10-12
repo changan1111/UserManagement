@@ -19,13 +19,20 @@ app.use(function(req, res, next) {
 });*/
 
 
-app.use(cors({
+/*app.use(cors({
   origin: ['http://localhost:4200'],
   "methods": "GET,PUT,POST",
   "preflightContinue": false,
   "optionsSuccessStatus": 204,
   credentials: true
-}));
+}));*/
+
+app.use(function(req, res, next) {
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.post('/user', async (req, res, next) => {
   const { name, mobile } = req.body;
