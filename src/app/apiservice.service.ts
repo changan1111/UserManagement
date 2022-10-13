@@ -14,7 +14,7 @@ export class ApiserviceService {
   constructor(private _http:HttpClient) { }
 
   //apiUrl="http://localhost:3000/user";
-  apiUrl=environment.Url+"/";
+  apiUrl=environment.Url+"/user";
 
   getAllData():Observable<any>{
     return this._http.get(this.apiUrl);
