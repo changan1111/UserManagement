@@ -9,4 +9,4 @@
  
  COPY . .
  
- CMD ["node", "index.js"]
+ CMD ["node", "start"]
