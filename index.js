@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 }));*/
 
 
-app.use(cors({ origin: ["http://localhost:3000", "https://localhost:4200"] }));
+app.use(cors({ origin: "*"}));
 
 
 /*app.use(function(req, res, next) {

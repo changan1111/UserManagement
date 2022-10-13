@@ -2,8 +2,7 @@
   "name": "frontend",
   "version": "0.0.0",
   "description": "to test real time db",
-  "main": "index.js",
-  "scripts": {
+   "scripts": {
     "ng": "ng",
     "start": "nodemon app.js",
     "build": "ng build",
