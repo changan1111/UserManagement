@@ -7,6 +7,8 @@
 
  RUN npm install cors --save
  
+ 
+
  COPY . .
  
  CMD ["node", "index.js"]
