@@ -9,7 +9,10 @@ var cors = require('cors');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+app.use(cors);
 /*
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "req.headers.origin"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -38,7 +41,7 @@ app.use(function(req, res, next) {
   next();
 });*/
 
-app.use(cors({
+/*app.use(cors({
   origin: true, // "true" will copy the domain of the request back
                 // to the reply. If you need more control than this
                 // use a function.
@@ -51,9 +54,9 @@ app.use(cors({
   methods: 'POST,GET,PUT,OPTIONS,DELETE' // Make sure you're not blocking
                                          // pre-flight OPTIONS requests
 }));
+*/
 
-
-app.post('/user', async (req, res, next) => {
+app.post('/user', async (req, res) => {
   const { name, mobile } = req.body;
   console.log(name)
   console.log(mobile)
@@ -67,7 +70,7 @@ app.post('/user', async (req, res, next) => {
 });
 
 
-app.get('/user', async (req, res, next) => {
+app.get('/user', async (req, res) => {
 
   //res.header("Access-Control-Allow-Origin", "req.headers.origin"); // update to match the domain you will make the request from
   //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -85,7 +88,7 @@ app.get('/user', async (req, res, next) => {
 });
 
 
-app.get('/user/:id', async (req, res, next) => {
+app.get('/user/:id', async (req, res) => {
   //res.header("Access-Control-Allow-Origin", "req.headers.origin"); // update to match the domain you will make the request from
   //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   //res.header("Access-Control-Allow-Methods", "DELETE,PUT,GET,POST");
@@ -102,7 +105,7 @@ app.get('/user/:id', async (req, res, next) => {
 });
 
 
-app.put('/user/:id', async (req, res, next) => {
+app.put('/user/:id', async (req, res) => {
   //res.header("Access-Control-Allow-Origin", "req.headers.origin"); // update to match the domain you will make the request from
   //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   //res.header("Access-Control-Allow-Methods", "DELETE,PUT,GET,POST");
@@ -127,7 +130,7 @@ app.put('/user/:id', async (req, res, next) => {
 });
 
 
-app.delete('/user/:id', async (req, res, next) => {
+app.delete('/user/:id', async (req, res) => {
   //res.header("Access-Control-Allow-Origin", "req.headers.origin"); // update to match the domain you will make the request from
   //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   //res.header("Access-Control-Allow-Methods", "DELETE,PUT,GET,POST");
