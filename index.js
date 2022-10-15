@@ -19,16 +19,15 @@ app.use(function(req, res, next) {
 });*/
 
 
-/*app.use(cors({
-  origin: ['http://localhost:4200'],
+app.use(cors({
+  "origin": ['http://localhost:3000'],
   "methods": "GET,PUT,POST",
   "preflightContinue": false,
-  "optionsSuccessStatus": 204,
-  credentials: true
-}));*/
+   "credentials": true
+}));
 
 
-//app.use(cors({ origin: "*"}));
+app.use(cors({ origin: "*"}));
 
 
 /*app.use(function(req, res, next) {
@@ -68,10 +67,6 @@ app.post('/user', async (req, res, next) => {
 
 
 app.get('/user', async (req, res, next) => {
-
-  //res.header("Access-Control-Allow-Origin", "req.headers.origin"); // update to match the domain you will make the request from
-  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  //res.header("Access-Control-Allow-Methods", "DELETE,PUT,GET,POST");
   const { name, mobile } = req.body;
   console.log(name)
   console.log(mobile)
@@ -86,9 +81,6 @@ app.get('/user', async (req, res, next) => {
 
 
 app.get('/user/:id', async (req, res, next) => {
-  //res.header("Access-Control-Allow-Origin", "req.headers.origin"); // update to match the domain you will make the request from
-  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  //res.header("Access-Control-Allow-Methods", "DELETE,PUT,GET,POST");
   const {id} = req.params;
   console.log(id)
   try {
@@ -103,9 +95,6 @@ app.get('/user/:id', async (req, res, next) => {
 
 
 app.put('/user/:id', async (req, res, next) => {
-  //res.header("Access-Control-Allow-Origin", "req.headers.origin"); // update to match the domain you will make the request from
-  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  //res.header("Access-Control-Allow-Methods", "DELETE,PUT,GET,POST");
   const {id} = req.params;
   const { name, mobile } = req.body;
   console.log(id)
@@ -128,9 +117,6 @@ app.put('/user/:id', async (req, res, next) => {
 
 
 app.delete('/user/:id', async (req, res, next) => {
-  //res.header("Access-Control-Allow-Origin", "req.headers.origin"); // update to match the domain you will make the request from
-  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  //res.header("Access-Control-Allow-Methods", "DELETE,PUT,GET,POST");
   const {id} = req.params;
   console.log(req.params);
   console.log(id)
