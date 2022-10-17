@@ -4,8 +4,7 @@
   "description": "to test real time db",
    "scripts": {
     "ng": "ng",
-    "start": "nodemon index.js",
-    "dev":"nodemon index.js",
+    "start": "node index.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
