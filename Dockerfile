@@ -1,16 +1,16 @@
- FROM node:alpine
+ FROM node:14-alpine
 
- WORKDIR '/app'
-
+ WORKDIR /app
+ 
  COPY package.json .
- RUN npm install
 
- RUN npm install cors --save
- 
- 
+ COPY package-lock.json .
+
+ RUN npm ci
+
 
  COPY . .
- 
- CMD ["node", "index.js"]
+
+ CMD ["npm","start"]
 
  EXPOSE 3000

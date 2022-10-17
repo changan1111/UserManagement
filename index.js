@@ -6,6 +6,8 @@ const db = require('./connection');
 const postModel = require('./postModel');
 var cors = require('cors');
 
+app.use(cors());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -18,16 +20,15 @@ app.use(function(req, res, next) {
   next();
 });*/
 
-
+/*
 app.use(cors({
   "origin": ['http://localhost:3000'],
   "methods": "GET,PUT,POST",
   "preflightContinue": false,
    "credentials": true
-}));
+}));*/
 
 
-app.use(cors({ origin: "*"}));
 
 
 /*app.use(function(req, res, next) {
@@ -131,7 +132,12 @@ app.delete('/user/:id', async (req, res, next) => {
 });
 
 //Set the base path to the angular-test dist folder
-app.use(express.static(path.join(__dirname, 'dist/frontend')));
+
+app.use(express.static(path.join(__dirname, '/dist/frontend')));
+
+console.log("/dist/frontend");
+
+console.log("direcotry name"+__dirname);
 
 //Any routes will be redirected to the angular app
 app.get('*', function(req, res) {
