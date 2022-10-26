@@ -6,11 +6,13 @@
 
  COPY package-lock.json .
 
- RUN npm ci
 
+ RUN npm ci
 
  COPY . .
 
- CMD ["npm","start"]
-
  EXPOSE 3000
+
+ CMD ["node","index.js"]
+
+ 
