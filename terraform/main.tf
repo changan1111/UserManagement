@@ -9,6 +9,8 @@ terraform {
 
 provider "aws" {
   region = var.region
+  access_key = ${{ secrets.AWS_ACCESS_KEY_ID }}
+  secret_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 }
 resource "aws_instance" "servernode" {
   ami                    = "ami-09d3b3274b6c5d4aa"
