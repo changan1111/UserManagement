@@ -1,4 +1,4 @@
-name: CI/CD with Terraform
+name: CI-CD with Terraform
 
 
 on:
@@ -25,7 +25,7 @@ jobs:
           terraform_wrapper: false
       - name: Terraform Apply
         id:   apply
-          env:
+        env:
           TF_VAR_ec2_name:  "${{ github.event.inputs.ec2-name }}"
         run: |
           cd terraform/
