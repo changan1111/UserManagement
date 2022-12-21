@@ -76,7 +76,7 @@ jobs:
         with:
           host: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
           username: ec2-user
-          key: ${{ secrets.AWS_SSH_KEY_PUBLIC }}
+          key: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
           port: 22
           script: |
             sudo yum update -y
