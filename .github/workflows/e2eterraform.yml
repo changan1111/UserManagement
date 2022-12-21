@@ -74,9 +74,9 @@ jobs:
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v0.0.8
         with:
-          host: ${{ env.SERVER_PUBLIC_IP }}
+          host: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
           username: ec2-user
-          key: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
+          key: ${{ secrets.AWS_SSH_KEY_PUBLIC }}
           port: 22
           script: |
             sudo yum update -y
