@@ -52,5 +52,4 @@ resource "aws_security_group" "alb_security_group"{
 
 output "instance_public_ip" {
   value     = aws_instance.servernode.public_ip
-  sensitive = true
 }
