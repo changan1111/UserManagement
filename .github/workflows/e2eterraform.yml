@@ -72,15 +72,16 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           
       - name: Executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v0.0.8
         with:
           host: ${{ env.SERVER_PUBLIC_IP }}
           username: ec2-user
           key: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
+          port: 22
           script: |
             sudo yum update -y
             sudo yum install docker -y
             sudo service docker start
             sudo usermod -a -G docker ec2-user
             sudo su docker pull changan1111/newdocker:v2
-            sudo su docker run  -p 80:8080 changan1111/newdocker:v2
+            sudo su docker run  -p 80:3000 changan1111/newdocker:v2
