@@ -71,34 +71,20 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           
+   
       
       
-      - name: Deploy in EC2
-        env:
-            PRIVATE_KEY: ${{ secrets.AWS_SSH_KEY_PRIVATE  }}
-            HOSTNAME : ${{ env.SERVER_PUBLIC_IP }}
-            USER_NAME : "ec2-user"
-            
-        run: |
-            echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
-            ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} 
-            #Now we have got the access of EC2 and we will start the deploy
+      - name: Executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+         host: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
+         username: ec2-user
+         key: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
+         port: 22
+         script: |
+            sudo yum update -y
             sudo yum install docker -y
-
-      
-      
-      
-      #- name: Executing remote ssh commands using ssh key
-      #  uses: appleboy/ssh-action@master
-      #  with:
-      #   host: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
-      #    username: ec2-user
-      #    key: ${{ secrets.AWS_SSH_KEY_PUBLIC }}
-      #   port: 22
-      #    script: |
-      #      sudo yum update -y
-      #      sudo yum install docker -y
-      #      sudo service docker start
-      #      sudo usermod -a -G docker ec2-user
-      #      sudo su docker pull changan1111/newdocker:v2
-      #      sudo su docker run  -p 80:3000 changan1111/newdocker:v2
+            sudo service docker start
+            sudo usermod -a -G docker ec2-user
+            sudo su docker pull changan1111/newdocker:v2
+            sudo su docker run  -p 80:3000 changan1111/newdocker:v2
