@@ -17,9 +17,9 @@ resource "aws_instance" "servernode" {
 
 connection {
     type        = "ssh"
-    host        = self.public_ip
+    host        = aws_instance.firstserver.public_ip
     user        = "ec2-user"
-    private_key = var.private_key
+    private_key = "vpcpublickey"
     timeout     = "4m"
   }
   tags = {
