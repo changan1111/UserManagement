@@ -76,11 +76,11 @@ jobs:
       - name: Deploy in EC2
         env:
             PRIVATE_KEY: ${{ secrets.AWS_SSH_KEY_PRIVATE  }}
-            HOSTNAME : ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
-            USER_NAME : ec2-user
+            HOSTNAME : ${{ env.SERVER_PUBLIC_IP }}
+            USER_NAME : "ec2-user"
             
         run: |
-            echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+            echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
             ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} 
             #Now we have got the access of EC2 and we will start the deploy
             sudo yum install docker -y
