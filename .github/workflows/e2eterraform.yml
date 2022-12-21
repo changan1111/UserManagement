@@ -72,7 +72,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           
       - name: Executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@v0.0.8
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
           username: ec2-user
