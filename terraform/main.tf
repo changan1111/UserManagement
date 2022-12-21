@@ -13,7 +13,7 @@ provider "aws" {
 resource "aws_instance" "servernode" {
   ami                    = "ami-09d3b3274b6c5d4aa"
   instance_type          = "t2.micro"
-  key_name               = "vpcprivatekey"
+  key_name               = "vpcpublikey"
 }
 
 resource "aws_security_group" "alb_security_group"{
