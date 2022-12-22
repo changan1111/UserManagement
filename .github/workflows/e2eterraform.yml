@@ -48,7 +48,7 @@ jobs:
         run: echo SERVER_PUBLIC_IP=${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }} >> $GITHUB_ENV
       
       - name: print ip
-        run: echo " Print a single environment variable (the commit SHA ) - ${{ env.SERVER_PUBLIC_IP }} "
+        run: echo " Print a single environment variable (the commit SHA ) - ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }} "
 
       
       - name: Npm install & npm build
