@@ -14,6 +14,16 @@ resource "aws_instance" "servernode" {
   ami                    = "ami-09d3b3274b6c5d4aa"
   instance_type          = "t2.micro"
   key_name               = "vpcpublickey"
+  
+   connection {
+    type        = "ssh"
+    host        = self.public_ip
+    user        = "ec2-user"
+    timeout     = "4m"
+  }
+  tags = {
+    "name" = "DeployVM"
+  }
 }
 
 resource "aws_security_group" "alb_security_group"{
