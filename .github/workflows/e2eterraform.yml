@@ -11,6 +11,8 @@ on:
 jobs:
   provision-ec2:
     runs-on: ubuntu-latest
+    outputs:
+      SERVER_PUBLIC_IP: ${{ steps.set-ip.outputs.instance_public_ip}}
     steps:
       - uses: actions/checkout@v3
       - name: Configure AWS credentials
@@ -33,6 +35,12 @@ jobs:
           terraform validate
           terraform plan 
           terraform apply -auto-approve
+          
+      - name: Set output
+        id: set-ip
+        run: |-
+          echo "::set-output name=instance_public_ip::$(terraform output instance_public_ip)"
+        working-directory: ./terraform
 
   deploy-app:
     runs-on: ubuntu-latest
