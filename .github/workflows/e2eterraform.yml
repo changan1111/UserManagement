@@ -103,6 +103,8 @@ jobs:
          key: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
          port: 22
          script: |
+            echo "$key" > private_key && chmod 600 private_key
+            ssh -o StrictHostKeyChecking=no -i private_key ${username}@${host}
             sudo yum update -y
             sudo yum install docker -y
             sudo service docker start
