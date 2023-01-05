@@ -13,13 +13,14 @@ provider "aws" {
 resource "aws_instance" "servernode" {
   ami                    = "ami-09d3b3274b6c5d4aa"
   instance_type          = "t2.micro"
-  key_name               = "vpcpublickey"
+  key_name               = aws_key_pair.key_access.key_name
+
   
    connection {
     type        = "ssh"
     host        = self.public_ip
     user        = "ec2-user"
-    private_key = env.private_key 
+    private_key = tls_private_key.mykey1.private_key_pem
     timeout     = "4m"
   }
   tags = {
@@ -49,6 +50,21 @@ resource "aws_security_group" "alb_security_group"{
   }
 }
 
+########################## Define Key ###########################
+resource "tls_private_key" "mykey1" {
+  algorithm = "RSA"
+}
+
+resource "aws_key_pair" "key_access" {
+  key_name   = "mykey"
+  public_key = tls_private_key.mykey1.public_key_openssh
+  depends_on = [
+    tls_private_key.mykey1
+  ]
+
+  tags = {
+    Name = "access key"
+  }
 
 output "instance_public_ip" {
   value     = aws_instance.servernode.public_ip
