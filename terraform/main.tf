@@ -65,7 +65,7 @@ resource "aws_key_pair" "key_access" {
   tags = {
     Name = "access key"
   }
-
+}
 output "instance_public_ip" {
   value     = aws_instance.servernode.public_ip
 }
