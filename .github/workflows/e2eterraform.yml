@@ -110,23 +110,27 @@ jobs:
           SSH_USER: ec2-user
           SSH_KEY: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
       - name: List home directory
-        run: ssh ec2 'ls -la'
+        run: "sudo yum update -y &&
+             sudo yum install docker -y &&
+             sudo service docker start &&
+             sudo usermod -a -G docker ec2-user &&
+             sudo su docker pull changan1111/newdocker:v2"
       
                 
-      - name: Executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
-        with:
-         host: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
-         username: ec2-user
-         key: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
-         port: 22
-         script: |
-            echo "$key" > private_key && chmod 600 private_key
-            ssh -o StrictHostKeyChecking=no -i private_key ${username}@${host}
-            sudo yum update -y
-            sudo yum install docker -y
-            sudo service docker start
-            sudo usermod -a -G docker ec2-user
-            sudo su docker pull changan1111/newdocker:v2
-            sudo su docker run  -p 80:3000 changan1111/newdocker:v2
+      #- name: Executing remote ssh commands using ssh key
+      #  uses: appleboy/ssh-action@master
+      #  with:
+      #   host: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
+      #   username: ec2-user
+      #   key: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
+      #   port: 22
+      #   script: |
+      #      echo "$key" > private_key && chmod 600 private_key
+      #      ssh -o StrictHostKeyChecking=no -i private_key ${username}@${host}
+      #      sudo yum update -y
+      #      sudo yum install docker -y
+      #      sudo service docker start
+      #      sudo usermod -a -G docker ec2-user
+      #      sudo su docker pull changan1111/newdocker:v2
+      #      sudo su docker run  -p 80:3000 changan1111/newdocker:v2
         
