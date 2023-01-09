@@ -116,6 +116,7 @@ jobs:
              sudo yum install docker -y &&
              sudo service docker start &&
              sudo usermod -a -G docker ec2-user &&
+             docker login -u changan1111 -p $DOCKER_PASSWORD &&
              sudo docker pull changan1111/newdocker:v2 &&
              sudo docker run  -p 80:3000 changan1111/newdocker:v2'
         env:
