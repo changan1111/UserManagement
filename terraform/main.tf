@@ -30,7 +30,7 @@ resource "aws_instance" "servernode" {
     timeout     = "4m"
   }
   tags = {
-    "name" = "DeployVM"
+    "name" = "Connect VM"
   }
 }
 
