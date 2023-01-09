@@ -113,8 +113,9 @@ jobs:
         run: ssh ec2 'sudo yum update -y &&
              sudo yum install docker -y &&
              sudo service docker start &&
-             sudo usermod -a -G docker ec2-user &&
-             sudo su docker pull changan1111/newdocker:v2'
+             sudo usermod -a -G docker ec2-user&&
+             sudo docker pull changan1111/newdocker:v2&&
+             sudo docker run  -p 80:3000 changan1111/newdocker:v2'
       
                 
       #- name: Executing remote ssh commands using ssh key
