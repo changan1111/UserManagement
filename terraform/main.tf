@@ -1,4 +1,4 @@
-terraform {
+/*terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -9,10 +9,10 @@ terraform {
   backend "s3" {
     key = "aws/ec2-deploy/terraform.tfstate"
   }
-}
+}*/
 
 provider "aws" {
-  region = var.region
+  region = "us-east-1"
 }
 resource "aws_instance" "servernode" {
   ami                    = "ami-09d3b3274b6c5d4aa"
