@@ -81,11 +81,11 @@ jobs:
       #    username: ${{ secrets.DOCKER_USERNAME }}
       #    password: ${{ secrets.DOCKER_PASSWORD }}
 
-      #- name: Docker Login
-      #  uses: docker/login-action@v2
-      #  with: 
-      #    username: ${{ secrets.DOCKER_USERNAME }}
-      #    password: ${{ secrets.DOCKER_PASSWORD }}
+         name: Docker Login
+         uses: docker/login-action@v2
+         with: 
+           username: ${{ secrets.DOCKER_USERNAME }}
+           password: ${{ secrets.DOCKER_PASSWORD }}
           
       #- name: Configure AWS credentials
       #  uses: aws-actions/configure-aws-credentials@v1
@@ -115,9 +115,8 @@ jobs:
         run: ssh ec2 'sudo yum update -y &&
              sudo yum install docker -y &&
              sudo service docker start &&
-             docker login -u changan1111 -p $DOCKER_PASSWORD &&
-             sudo usermod -a -G docker ec2-user&&
-             sudo docker pull changan1111/newdocker:v2&&
+             sudo usermod -a -G docker ec2-user &&
+             sudo docker pull changan1111/newdocker:v2 &&
              sudo docker run  -p 80:3000 changan1111/newdocker:v2'
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
