@@ -116,6 +116,15 @@ jobs:
              sudo yum install docker -y &&
              sudo service docker start &&
              sudo usermod -a -G docker ec2-user &&
+             sudo reboot'
+
+      - name: Sleep for 60 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '60s'
+
+      - name: Run Docker Command Using SSH
+        run: ssh ec2 '
              echo '$DOCKER_PASSWORD' testpurpose &&
              docker login -u changan1111 -p '$DOCKER_PASSWORD's &&
              sudo docker pull changan1111/newdocker:v2 &&
