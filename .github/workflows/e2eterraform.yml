@@ -127,8 +127,9 @@ jobs:
 
       - name: Run Docker Command Using SSH
         run: ssh ec2 'echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username changan1111 --password-stdin &&
-             sudo docker pull changan1111/newdocker:v2 &&
-             sudo docker run  -p 80:3000 changan1111/newdocker:v2'
+             docker pull changan1111/newdocker:v2 &&
+             docker images &&
+             docker run  -p 80:3000 changan1111/newdocker:v2'
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         
