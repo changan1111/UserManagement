@@ -111,12 +111,12 @@ jobs:
           SSH_HOST: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
           SSH_USER: ec2-user
           SSH_KEY: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
-      - name: List home directory
+      - name: Run Docker Command Using SSH
         run: ssh ec2 'sudo yum update -y &&
              sudo yum install docker -y &&
              sudo service docker start &&
              sudo usermod -a -G docker ec2-user &&
-             docker login --username changan1111 --password "$DOCKER_PASSWORD" &&
+             docker login -u changan1111 -p "$DOCKER_PASSWORD" &&
              sudo docker pull changan1111/newdocker:v2 &&
              sudo docker run  -p 80:3000 changan1111/newdocker:v2'
         env:
