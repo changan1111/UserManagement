@@ -126,10 +126,8 @@ jobs:
           time: '60s'
 
       - name: Run Docker Command Using SSH
-        run: ssh ec2 '
-             echo '$DOCKER_PASSWORD' testpurpose &&
+        run: ssh ec2 'echo '$DOCKER_PASSWORD' testpurpose &&
              echo "$DOCKER_PASSWORD" | docker login --username foo --password-stdin
-             #docker login -u changan1111 -p '$DOCKER_PASSWORD' &&
              sudo docker pull changan1111/newdocker:v2 &&
              sudo docker run  -p 80:3000 changan1111/newdocker:v2'
         env:
