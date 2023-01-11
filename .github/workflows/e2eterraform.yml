@@ -123,7 +123,7 @@ jobs:
       - name: Sleep for 30 seconds
         uses: jakejarvis/wait-action@master
         with:
-          time: '30s'
+          time: '20s'
 
       - name: PUll Image and Run Docker
         run: ssh ec2 'echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username changan1111 --password-stdin &&
