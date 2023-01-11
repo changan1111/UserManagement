@@ -113,7 +113,7 @@ jobs:
           SSH_KEY: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Run Docker Command Using SSH
+      - name: Install Docker Command Using SSH
         run: ssh ec2 'sudo yum update -y &&
              sudo yum install docker -y &&
              sudo service docker start &&
@@ -125,7 +125,7 @@ jobs:
         with:
           time: '30s'
 
-      - name: Run Docker Command Using SSH
+      - name: PUll Image and Run Docker
         run: ssh ec2 'echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username changan1111 --password-stdin &&
              docker pull changan1111/newdocker:v2 &&
              docker images &&
