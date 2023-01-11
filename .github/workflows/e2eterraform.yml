@@ -95,23 +95,23 @@ jobs:
           aws-region: us-east-1
 
 
-      #- name: Configure SSH
-      #  run: |
-      #    mkdir -p ~/.ssh/
-      #    echo "$SSH_KEY" > ~/.ssh/github-actions-key
-      #    chmod 600 ~/.ssh/github-actions-key
-      #    cat >>~/.ssh/config <<END
-      #    Host ec2
-      #      HostName $SSH_HOST
-      #      User $SSH_USER
-      #      IdentityFile ~/.ssh/github-actions-key
-      #      StrictHostKeyChecking no
-      #    END
-      #  env:
-      #    SSH_HOST: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
-      #    SSH_USER: ec2-user
-      #    SSH_KEY: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
-      #    DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/github-actions-key
+          chmod 600 ~/.ssh/github-actions-key
+          cat >>~/.ssh/config <<END
+          Host ec2
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/github-actions-key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_HOST: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
+          SSH_USER: ec2-user
+          SSH_KEY: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Install Docker Command Using SSH
         run: ssh ec2 'sudo yum update -y &&
