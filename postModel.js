@@ -6,6 +6,6 @@ const schema = mongoose.Schema({
     mobile: 'String'
 }, {timestamps:true})
 
-const Post = mongoose.model('mice',schema);
+const Post = mongoose.model('Movies',schema);
 module.exports=Post;
 
