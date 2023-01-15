@@ -131,7 +131,7 @@ jobs:
              docker run --name mongodb -p 27017:27017 -d mongo &&
              docker exec -it mongodb mongosh &&
              use admin &&
-             db.createCollection("Movies") &&
+             db.createCollection('Movies') &&
              show collections &&
              exit'
 
