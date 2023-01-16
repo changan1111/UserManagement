@@ -53,9 +53,8 @@ jobs:
       
       - name: create env file
         run: |
-        touch .env
+        touch .env &&
         echo connectionstringuri=mongodb://${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}:27017/admin >> .env
-
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.4.1
