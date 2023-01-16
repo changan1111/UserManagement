@@ -10,7 +10,7 @@ const connectionParams={
 
 const uri = process.env.connectionstringuri;
 
-
+console.log(uri);
 //const uri="mongodb://localhost:27017/Admin";
 
 //console.log("connection url:" + uri)
