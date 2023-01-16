@@ -127,13 +127,9 @@ jobs:
           time: '20s'
 
       - name: Set up DB Docker
-        run: ssh ec2 'docker pull mongo &&
-             docker run --name mongodb -p 27017:27017 -d mongo &&
-             docker exec -it mongodb mongosh &&
-             use admin &&
-             db.createCollection('\''Movies'\'') &&
-             show collections &&
-             exit'
+        run:  ssh ec2 'docker pull mongo &&
+              docker run --name mongodb -p 27017:27017 -d mongo &&
+              exit'
 
         
       
