@@ -70,7 +70,7 @@ jobs:
             npm run build        
         env:
            url: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
-           connectionstringuri: "mongodb://"+${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}+":27017/Admin"
+           connectionstringuri: mongodb://{{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}:27017/Admin
            
 
       # This will build and push.. if need enable.
