@@ -8,8 +8,10 @@ const connectionParams={
     useUnifiedTopology: true 
 }
 
-//const uri = process.env.connectionstringuri;
-const uri="mongodb://localhost:27017/Admin";
+const uri = process.env.connectionstringuri;
+
+
+//const uri="mongodb://localhost:27017/Admin";
 
 //console.log("connection url:" + uri)
 

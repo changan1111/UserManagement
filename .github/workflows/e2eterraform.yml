@@ -60,7 +60,9 @@ jobs:
       - name: print ip
         run: echo " Print a single environment variable (the commit SHA ) - ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }} "
 
-      
+      - name: print connection string
+        run: echo " mongodb://"+${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}+":27017/Admin "
+
       
       - name: Npm install & npm build
         run:  |
@@ -68,7 +70,8 @@ jobs:
             npm run build        
         env:
            url: ${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}
-        
+           connectionstringuri: "mongodb://"+${{ needs.provision-ec2.outputs.SERVER_PUBLIC_IP }}+":27017/Admin
+           
 
       # This will build and push.. if need enable.
 
