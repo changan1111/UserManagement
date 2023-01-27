@@ -1,0 +1,7 @@
+{
+  "auths": {
+    "docker.io": {
+      "auth": "echo -n 'changan1111:Chandru82$' | base64"
+    }
+  }
+}
