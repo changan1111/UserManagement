@@ -27,7 +27,6 @@ jobs:
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.4.1
-<<<<<<< HEAD
         
       - name: Create env file
         run: |
@@ -36,17 +35,6 @@ jobs:
           cat .env
         env: 
           connectionstringuri: mongodb+srv://admin:EnterPasswordHere@cluster0.r01tuny.mongodb.net/Employees?retryWrites=true&w=majority'
-=======
-     
-      - name: Create env file
-        run: |
-          touch .env
-          echo connectionstringuri: mongodb+srv://admin:EnterPasswordHere@cluster0.r01tuny.mongodb.net/Employees?retryWrites=true&w=majority > .env
-          cat .env
-        env: 
-          connectionstringuri: mongodb+srv://admin:EnterPasswordHere@cluster0.r01tuny.mongodb.net/Employees?retryWrites=true&w=majority 
-        
->>>>>>> cb4c94f4eac15ea3954af71aaca6eeaeb3923300
         
       - name: Npm install & npm build
         run:  |
