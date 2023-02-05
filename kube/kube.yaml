@@ -19,7 +19,7 @@ spec:
         image: changan1111/newdocker:latest
         resources:
           limits:
-            memory: "1024Mi"
+            memory: "1200Mi"
             cpu: "500m"
         ports:
         - containerPort: 3000
