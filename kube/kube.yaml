@@ -19,7 +19,7 @@ spec:
         image: changan1111/newdocker:latest
         resources:
           limits:
-            memory: "2048Mi"
+            memory: "1200Mi"
             cpu: "500m"
         ports:
         - containerPort: 3000
@@ -34,8 +34,10 @@ spec:
   selector:
     app: myapp
   ports:
-  - port: 80
+  - protocol: TCP
+    port:80
     targetPort: 3000
+    nodePort:31110
   type: LoadBalancer
 
        
