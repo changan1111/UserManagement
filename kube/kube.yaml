@@ -19,11 +19,11 @@ spec:
         image: changan1111/newdocker:latest
         resources:
           requests:
-            ephemeral-storage: "2Gi"
+            ephemeral-storage: "4Gi"
           limits:
-            memory: "2Gi"
+            memory: "4Gi"
             cpu: "500m"
-            ephemeral-storage: "2Gi"
+            ephemeral-storage: "4Gi"
           
 
         ports:
