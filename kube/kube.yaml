@@ -18,14 +18,15 @@ spec:
       - name: myapp
         image: changan1111/newdocker:latest
         resources:
-          requests:
-            ephemeral-storage: "3Gi"
-            cpu: "500m"
-            memory: "1Gi"
           limits:
             memory: "2Gi"
             cpu: "500m"
-            ephemeral-storage: "3Gi"
+            ephemeral-storage: "2Gi"
+          requests:
+            ephemeral-storage: "1Gi"
+            cpu: "500m"
+            memory: "1Gi"
+          
           
 
         ports:
