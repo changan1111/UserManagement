@@ -18,6 +18,12 @@ spec:
       - name: myapp
         image: changan1111/newdocker:latest
         resources:     
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+          resources:
+            cpu: "250m"
+            memeory: "1Gi"
         ports:
         - containerPort: 3000
 
