@@ -9,7 +9,7 @@ spec:
   ports:
   - port: 80
   selector:
-    app: nginx
+    app: myappdeployment
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -29,8 +29,8 @@ spec:
       spec:
         imagePullSecrets: 
         -  name: dockercreds  
-      containers:
-       - name: myapp
-         image: changan1111/newdocker:latest
-         ports:
+        containers:
+        - name: myapp
+          image: changan1111/newdocker:latest
+          ports:
             - containerPort: 3000
